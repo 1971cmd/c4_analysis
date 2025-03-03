@@ -1,0 +1,15 @@
+What is the purpose of the next() function, and how does it contribute to the compilation process?
+
+The next() function is the lexical analyzer (lexer) of the C4 compiler. It reads the source code character by character and converts it into tokens, such as numbers (Num), identifiers (Id), and operators (+, -). These tokens are then passed to the parser, which uses them to generate virtual machine instructions. For example, when next() encounters a number, it stores the value in ival and assigns the token type Num. This step is essential for breaking down the source code into meaningful components that the parser can process.
+
+How does C4 handle symbol resolution (e.g., variables, functions)?
+
+C4 uses a symbol table (sym array) to manage identifiers like variables and functions. Each entry in the symbol table contains the identifier's name, type (e.g., INT, CHAR), class (e.g., global Glo or local Loc), and value (e.g., memory address or constant). During parsing, the compiler resolves symbols by searching the symbol table. If an identifier is not found, it is added to the table. This ensures that variables and functions are correctly referenced during compilation.
+
+What are the limitations of C4 as a compiler? What features of C does it not support?
+
+C4 is a minimalistic compiler with several limitations. It does not support the C preprocessor (e.g., #include, #define, macros), advanced data types (e.g., float, double, structs), or a standard library. Functions like printf are hardcoded rather than imported from a library. Additionally, C4 lacks code optimization and error recovery mechanisms, exiting immediately upon encountering errors. These limitations make C4 unsuitable for complex programs but ideal for educational purposes and self-hosting.
+
+How does C4 achieve self-hosting (i.e., compiling itself)? What are the implications of this design?
+
+C4 achieves self-hosting because it is written in a subset of C that it supports. This means the compiler can compile its own source code. The implications of this design are significant: it demonstrates the compiler's simplicity and portability, as it can run on any system with a C compiler. However, the subset of C it supports is limited, restricting its use for more complex programs. This design choice makes C4 an excellent tool for learning about compilers and bootstrapping.

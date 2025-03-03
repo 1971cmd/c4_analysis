@@ -1,0 +1,45 @@
+
+1. Added Support for the `for` Loop
+2. Fixed Format Specifier Warnings
+3. Ensured the Modulus Operator (`%`) is Fully Functional
+
+---
+
+1. Added Support for the `for` Loop
+
+The `for` loop is a fundamental control structure in C, and adding support for it significantly enhances the compiler's functionality. The following changes were made:
+
+- The `for` keyword was added to the list of recognized tokens and keywords.
+- The compiler's parsing logic was updated to handle the syntax of the `for` loop, including its initialization, condition, and update expressions.
+- Code generation was implemented to emit the necessary instructions for the `for` loop, including jumps and condition checks.
+
+Impact: Programs can now use `for` loops, making the compiler more versatile and capable of handling a wider range of C programs.
+
+---
+
+2. Fixed Format Specifier Warnings
+
+The original C4 compiler used `%d` as the format specifier in `printf` statements, which caused warnings because the `int` type was defined as `long long`. To resolve this:
+
+- All instances of `%d` in `printf` statements were replaced with `%lld` to match the `long long` type.
+
+Impact: The compiler no longer produces warnings related to format specifiers, and the output of `printf` statements is now correct.
+
+---
+
+3. Ensured the Modulus Operator (`%`) is Fully Functional
+
+The modulus operator (`%`) was already supported in the original C4 compiler, but its functionality was confirmed and documented:
+
+- The tokenizer recognizes the `%` symbol as the modulus operator.
+- The virtual machine implements the modulus operation, allowing it to be used in expressions.
+
+Impact: Programs can now use the modulus operator (`%`) to compute remainders, which is essential for many algorithms and calculations.
+
+---
+
+Conclusion
+
+The modified C4 compiler (`c4_modified.c`) now supports the `for` loop, fixes format specifier warnings, and ensures the modulus operator works correctly. These changes make the compiler more feature-complete and suitable for compiling a wider range of C programs.
+
+---
